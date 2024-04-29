@@ -1,0 +1,237 @@
+AWS Amplify Console
+AWS Amplify UI Builder
+Amazon API Gateway
+Amazon API Gateway V2
+AWS AppConfig
+Amazon AppFlow
+Amazon AppIntegrations
+Application Auto Scaling
+AWS App Mesh
+AWS App Runner
+Amazon AppStream 2.0
+AWS AppSync
+AWS ARC - Zonal Shift
+Alexa Skills Kit
+Amazon Athena
+AWS Audit Manager
+AWS Auto Scaling
+AWS B2B Data Interchange
+AWS Backup
+AWS Backup gateway
+AWS Batch
+Amazon Bedrock
+AWS Billing Conductor
+AWS Budgets
+AWS Certificate Manager
+AWS Chatbot
+AWS Clean Rooms
+CleanRoomsML
+AWS Cloud9
+AWS CloudFormation
+Amazon CloudFront
+AWS Cloud Map
+AWS CloudTrail
+Amazon CloudWatch
+Amazon CloudWatch Application Insights
+Amazon CloudWatch Evidently
+Amazon CloudWatch Internet Monitor
+Amazon CloudWatch Logs
+Amazon CloudWatch Synthetics
+AWS CodeArtifact
+AWS CodeBuild
+AWS CodeCommit
+AWS CodeConnections
+AWS CodeDeploy
+Amazon CodeGuru Profiler
+Amazon CodeGuru Reviewer
+AWS CodePipeline
+AWS CodeStar
+AWS CodeStar Connections
+AWS CodeStar Notifications
+Amazon Cognito
+Amazon Comprehend
+AWS Config
+Amazon Connect
+Amazon Connect Outbound Campaigns
+AWS Control Tower
+Amazon Connect Customer Profiles
+AWS Cost Explorer
+AWS Cost and Usage Report
+AWS Data Exports
+Amazon Data Lifecycle Manager
+AWS Data Pipeline
+AWS DataSync
+Amazon DataZone
+AWS Deadline Cloud
+DynamoDB Accelerator
+Amazon Detective
+AWS Device Farm
+Amazon DevOps Guru
+AWS Directory Service
+AWS Database Migration Service
+Amazon DocumentDB (with MongoDB compatibility)
+Amazon DocumentDB (with MongoDB compatibility) elastic
+Amazon DynamoDB
+Amazon EC2
+Amazon EC2 Auto Scaling
+Amazon ECR
+Amazon ECS
+Amazon Elastic File System
+Amazon Elastic Kubernetes Service
+AWS Elastic Beanstalk
+Elastic Load Balancing
+Elastic Load Balancing V2
+Amazon EMR
+Amazon EMR Serverless
+Amazon EMR on EKS
+Amazon ElastiCache
+AWS Entity Resolution
+Amazon EventBridge
+Amazon EventBridge Pipes
+Amazon EventBridge Scheduler
+Amazon EventBridge Schemas
+Amazon FinSpace schemas
+AWS Fault Injection Service
+AWS Firewall Manager
+Amazon Forecast
+Amazon Fraud Detector
+Amazon FSx
+Amazon GameLift
+AWS Global Accelerator
+AWS Glue
+AWS Glue DataBrew
+Amazon Managed Grafana
+AWS Ground Station
+Amazon GuardDuty
+AWS HealthImaging
+AWS HealthLake
+AWS Identity and Access Management
+AWS IAM Identity Center
+Identity Store
+AWS Identity and Access Management Access Analyzer
+EC2 Image Builder
+AWS Systems Manager Incident Manager
+AWS Systems Manager Incident Manager Contacts
+Amazon Inspector classic
+Amazon Inspector
+AWS IoT
+AWS IoT 1-Click
+AWS IoT Analytics
+AWS IoT Core Device Advisor
+AWS IoT Events
+Fleet Hub for AWS IoT Device Management
+AWS IoT FleetWise
+AWS IoT Greengrass
+AWS IoT Greengrass Version 2
+AWS IoT SiteWise
+AWS IoT TwinMaker
+AWS IoT Wireless
+Amazon IVS
+Amazon IVS Chat
+Amazon Kendra
+Amazon Kendra Intelligent Ranking
+Amazon Keyspaces (for Apache Cassandra)
+Amazon Kinesis
+Amazon Managed Service for Apache Flink
+Amazon Managed Service for Apache Flink V2
+Amazon Data Firehose
+Amazon Kinesis Video Streams
+AWS Key Management Service
+AWS Lake Formation
+AWS Lambda
+Amazon Lex
+AWS License Manager
+Amazon Lightsail
+Amazon Location Service
+Amazon Lookout for Equipment
+Amazon Lookout for Metrics
+Amazon Lookout for Vision
+AWS Mainframe Modernization
+Amazon Macie
+Amazon Managed Blockchain
+AWS Elemental MediaConnect
+AWS Elemental MediaConvert
+AWS Elemental MediaLive
+AWS Elemental MediaPackage
+AWS Elemental MediaPackage V2
+AWS Elemental MediaTailor
+AWS Elemental MediaStore
+Amazon MQ
+Amazon MemoryDB for Redis
+Amazon Managed Streaming for Apache Kafka
+Amazon Managed Streaming for Apache Kafka Connect
+Amazon Managed Workflows for Apache Airflow
+Amazon Neptune
+Amazon Neptune Analytics
+AWS Network Firewall
+AWS Network Manager
+Amazon Nimble Studio
+Observability Access Manager (OAM)
+AWS HealthOmics
+Amazon OpenSearch Ingestion
+Amazon OpenSearch Service
+Amazon OpenSearch Service (legacy Elasticsearch resource)
+Amazon OpenSearch Serverless
+AWS OpsWorks
+AWS OpsWorks CM
+AWS Organizations
+AWS Panorama
+Amazon Personalize
+Amazon Pinpoint
+Amazon Pinpoint Email
+AWS Private Certificate Authority
+AWS Private Certificate Authority for Active Directory
+AWS Proton
+Amazon Managed Service for Prometheus
+Amazon QLDB
+Amazon QuickSight
+AWS Resource Access Manager
+Amazon Relational Database Service
+Amazon Redshift
+Amazon Redshift Serverless
+AWS Migration Hub Refactor Spaces
+Amazon Rekognition
+AWS Resilience Hub
+AWS 리소스 탐색기
+AWS Resource Groups
+AWS RoboMaker
+IAM Roles Anywhere
+Amazon Route 53
+Amazon Route 53 Recovery Control
+Amazon Route 53 Recovery Readiness
+Amazon Route 53 Resolver
+Amazon CloudWatch RUM
+Amazon S3
+Amazon S3 Express
+Amazon S3 Object Lambda
+Amazon S3 on Outposts
+Amazon SageMaker
+AWS Secrets Manager
+AWS Service Catalog
+AWS Service Catalog AppRegistry
+AWS Security Hub
+Amazon Simple Email Service
+Amazon SimpleDB
+AWS Shield
+AWS Signer
+AWS SimSpace Weaver
+Amazon Simple Notification Service
+Amazon Simple Queue Service
+AWS Step Functions
+AWS Systems Manager
+AWS Support App
+AWS Systems Manager for SAP
+Amazon Timestream
+AWS Transfer Family
+Amazon Verified Permissions
+Amazon Connect Voice ID
+Amazon VPC Lattice
+AWS WAF
+AWS WAF Regional
+AWS WAF V2
+Amazon Connect Wisdom
+Amazon WorkSpaces
+Amazon WorkSpaces Thin Client
+Amazon WorkSpaces Web
+AWS X-Ray
+공유 속성 유형

@@ -1,0 +1,21 @@
+{
+  "serverlessConsole.services": [
+    {
+      "type": "dynamodb",
+      "title": "sjh-service-price-table",
+      "tableName": "sjh-service-price-table",
+      "awsProfile": "iampam",
+      "region": "ap-northeast-2"
+    },
+    {
+      "type": "serverlessFramework",
+      "title": null,
+      "awsProfile": "iampam",
+      "cwd": "./",
+      "command": "serverless print",
+      "timeOffsetInMs": 0,
+      "envVars": [],
+      "stages": ["dev"]
+    }
+  ]
+}

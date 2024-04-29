@@ -1,0 +1,18 @@
+{
+  "name": "advanced-query",
+  "version": "1.0.0",
+  "description": "",
+  "main": "advancedQuery.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-config-service": "^3.556.0",
+    "@aws-sdk/client-s3": "^3.556.0",
+    "@aws-sdk/util-utf8-node": "^3.259.0",
+    "csv-parser": "^3.0.0"
+  }
+}

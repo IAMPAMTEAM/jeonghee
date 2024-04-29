@@ -1,0 +1,54 @@
+service: demo-s3-crud-test-service
+# custom: null
+provider:
+  name: aws
+  runtime: nodejs20.x
+  stage: dev
+  region: ap-northeast-2
+  iamRoleStatements: # iamRoleStatements : 람다 함수가 AWS S3와 상호 작용하는 데 필요한 권한을 정의
+    - Effect: Allow
+      Action:
+        - s3:*
+        - s3-object-lambda:*
+      Resource:
+        - arn:aws:s3:::iampam/*
+functions:
+  s3JsonFileCrudTest:
+    handler: s3JsonFileCrudTest.handler
+    events:
+      - http:
+          path: /product/{id}
+          method: GET
+          cors: true
+      - http:
+          path: /product/{id}
+          method: PUT #수정
+          cors: true
+      - http:
+          path: /product/{id}
+          method: DELETE
+          cors: true
+      - http:
+          path: /product
+          method: POST #생성
+          cors: true
+# resources:
+#   Resources:
+#     ServicePriceDDB:
+#       Type: "AWS::DynamoDB::Table"
+#       Properties:
+#         TableName: ${self:service}-table
+#         AttributeDefinitions: #AttributeDefinition는 파티션키, 정렬키, 글로벌보조키만 정의한다.
+#           - AttributeName: serviceName
+#             AttributeType: S
+#           # - AttributeName: serviceMonthlyPrice
+#           #   AttributeType: Number
+#           # - AttributeName: serviceStatus
+#           #   AttributeType: BOOL
+#         KeySchema: #KeySchema: dynamodb의 key를 설정
+#           - AttributeName: serviceName
+#             KeyType: HASH
+#         # ProvisionedThroughput:  프로비전 모드
+#         #   ReadCapacityUnits: 1 # ReadCapacityUnits: 읽기 용량 설정
+#         #   WriteCapacityUnits: 1 # WriteCapacityUnits: 쓰기 용량 설정
+#         BillingMode: PAY_PER_REQUEST # 온디맨드 설정
