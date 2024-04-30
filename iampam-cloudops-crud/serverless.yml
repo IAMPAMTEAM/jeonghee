@@ -1,0 +1,112 @@
+service: iampam-cloudops-crud-service
+# custom: null
+provider:
+  name: aws
+  runtime: nodejs20.x
+  stage: dev
+  region: ap-northeast-2
+  iamRoleStatements: # iamRoleStatements : 람다 함수가 AWS S3와 상호 작용하는 데 필요한 권한을 정의
+    - Effect: Allow
+      Action:
+        - s3:*
+        - s3-object-lambda:*
+      Resource:
+        - arn:aws:s3:::iampam/*
+functions:
+  company:
+    handler: company.handler
+    events:
+      - http:
+          path: /company
+          method: GET
+          cors: true
+      - http:
+          path: /company/{companyRegistrationNumber}
+          method: GET
+          cors: true
+      - http:
+          path: /company/{companyRegistrationNumber}
+          method: PUT
+          cors: true
+      - http:
+          path: /company/{companyRegistrationNumber}
+          method: DELETE
+          cors: true
+      - http:
+          path: /company
+          method: POST
+          cors: true
+  account:
+    handler: account.handler
+    events:
+      - http:
+          path: /account
+          method: GET
+          cors: true
+      - http:
+          path: /account/{awsAccount}
+          method: GET
+          cors: true
+      - http:
+          path: /account/{awsAccount}
+          method: PUT
+          cors: true
+      - http:
+          path: /account/{awsAccount}
+          method: DELETE
+          cors: true
+      - http:
+          path: /account
+          method: POST
+          cors: true
+  governance:
+    handler: governance.handler
+    events:
+      - http:
+          path: /governance
+          method: GET
+          cors: true
+      - http:
+          path: /governance/{governanceKey}
+          method: GET
+          cors: true
+      - http:
+          path: /governance/{governanceKey}
+          method: PUT
+          cors: true
+      - http:
+          path: /governance/{governanceKey}
+          method: DELETE
+          cors: true
+      - http:
+          path: /governance
+          method: POST
+          cors: true
+  region:
+    handler: region.handler
+    events:
+      - http:
+          path: /region
+          method: GET
+          cors: true
+      - http:
+          path: /region/{awsRegionCode}
+          method: GET
+          cors: true
+  product:
+    handler: product.handler
+    events:
+      - http:
+          path: /product/{columnName}
+          method: GET
+          cors: true
+  cloudformation:
+    handler: cloudformation.handler
+    events:
+      - http:
+          path: /cloudformation/{awsResourceTypeName}
+          method: GET
+          cors: true
+package:
+  include:
+    - common.js
