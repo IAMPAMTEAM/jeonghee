@@ -1,4 +1,4 @@
-service: iampam-cloudops-crud-service
+service: iampam-crud-service
 # custom: null
 provider:
   name: aws
@@ -11,101 +11,121 @@ provider:
         - s3:*
         - s3-object-lambda:*
       Resource:
-        - arn:aws:s3:::iampam/*
+        - arn:aws:s3:::iampam-provider/provider/*
 functions:
-  company:
-    handler: company.handler
+  awsAccount:
+    handler: awsAccount.handler
     events:
       - http:
-          path: /company
+          path: /awsAccount
           method: GET
           cors: true
       - http:
-          path: /company/{companyRegistrationNumber}
-          method: GET
-          cors: true
-      - http:
-          path: /company/{companyRegistrationNumber}
+          path: /awsAccount/{awsAccount}
           method: PUT
           cors: true
       - http:
-          path: /company/{companyRegistrationNumber}
+          path: /awsAccount/{awsAccount}
           method: DELETE
           cors: true
       - http:
-          path: /company
+          path: /awsAccount
           method: POST
           cors: true
-  account:
-    handler: account.handler
+  awsCheckRules:
+    handler: awsCheckRules.handler
     events:
       - http:
-          path: /account
+          path: /awscheckrules
           method: GET
           cors: true
       - http:
-          path: /account/{awsAccount}
-          method: GET
-          cors: true
-      - http:
-          path: /account/{awsAccount}
+          path: /awscheckrules/{checkRuleName}
           method: PUT
           cors: true
       - http:
-          path: /account/{awsAccount}
+          path: /awscheckrules/{checkRuleName}
           method: DELETE
           cors: true
       - http:
-          path: /account
+          path: /awscheckrules
           method: POST
           cors: true
-  governance:
-    handler: governance.handler
+  awsProducts:
+    handler: awsProducts.handler
     events:
       - http:
-          path: /governance
+          path: /awsproducts
           method: GET
           cors: true
       - http:
-          path: /governance/{governanceKey}
-          method: GET
-          cors: true
-      - http:
-          path: /governance/{governanceKey}
+          path: /awsproducts/{awsResourceType}
           method: PUT
           cors: true
       - http:
-          path: /governance/{governanceKey}
+          path: /awsproducts/{awsResourceType}
           method: DELETE
           cors: true
       - http:
-          path: /governance
+          path: /awsproducts
           method: POST
           cors: true
-  region:
-    handler: region.handler
+  awsRegions:
+    handler: awsRegions.handler
     events:
       - http:
-          path: /region
+          path: /awsregions
           method: GET
           cors: true
       - http:
-          path: /region/{awsRegionCode}
-          method: GET
+          path: /awsregions/{awsRegionCode}
+          method: PUT
           cors: true
-  product:
-    handler: product.handler
+      - http:
+          path: /awsregions/{awsRegionCode}
+          method: DELETE
+          cors: true
+      - http:
+          path: /awsregions
+          method: POST
+          cors: true
+  socialUsers:
+    handler: socialUsers.handler
     events:
       - http:
-          path: /product/{columnName}
+          path: /socialusers
           method: GET
           cors: true
-  cloudformation:
-    handler: cloudformation.handler
+      - http:
+          path: /socialusers/{socialEmail}
+          method: PUT
+          cors: true
+      - http:
+          path: /socialusers/{socialEmail}
+          method: DELETE
+          cors: true
+      - http:
+          path: /socialusers
+          method: POST
+          cors: true
+  tenants:
+    handler: tenants.handler
     events:
       - http:
-          path: /cloudformation/{awsResourceTypeName}
+          path: /tenants
           method: GET
+          cors: true
+      - http:
+          path: /tenants/{companyRegistrationNumber}
+          method: PUT
+          cors: true
+      - http:
+          path: /tenants/{companyRegistrationNumber}
+          method: DELETE
+          cors: true
+      - http:
+          path: /tenants
+          method: POST
           cors: true
 package:
   include:
