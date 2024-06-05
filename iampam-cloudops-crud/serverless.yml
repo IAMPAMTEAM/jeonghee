@@ -14,26 +14,30 @@ provider:
         - arn:aws:s3:::iampam-provider/provider/*
 functions:
   awsAccount:
-    handler: awsAccount.handler
+    handler: provider_request_lambda/awsAccount.handler
     events:
       - http:
-          path: /awsAccount
+          path: /awsaccount
           method: GET
           cors: true
       - http:
-          path: /awsAccount/{awsAccount}
+          path: /awsaccount/{awsAccount}
           method: PUT
           cors: true
       - http:
-          path: /awsAccount/{awsAccount}
+          path: /awsaccount/{awsAccount}
           method: DELETE
           cors: true
       - http:
-          path: /awsAccount
+          path: /awsaccount
+          method: DELETE
+          cors: true
+      - http:
+          path: /awsaccount
           method: POST
           cors: true
   awsCheckRules:
-    handler: awsCheckRules.handler
+    handler: provider_request_lambda/awsCheckRules.handler
     events:
       - http:
           path: /awscheckrules
@@ -45,6 +49,10 @@ functions:
           cors: true
       - http:
           path: /awscheckrules/{checkRuleName}
+          method: DELETE
+          cors: true
+      - http:
+          path: /awscheckrules
           method: DELETE
           cors: true
       - http:
@@ -52,7 +60,7 @@ functions:
           method: POST
           cors: true
   awsProducts:
-    handler: awsProducts.handler
+    handler: provider_request_lambda/awsProducts.handler
     events:
       - http:
           path: /awsproducts
@@ -64,6 +72,10 @@ functions:
           cors: true
       - http:
           path: /awsproducts/{awsResourceType}
+          method: DELETE
+          cors: true
+      - http:
+          path: /awsproducts
           method: DELETE
           cors: true
       - http:
@@ -71,7 +83,7 @@ functions:
           method: POST
           cors: true
   awsRegions:
-    handler: awsRegions.handler
+    handler: provider_request_lambda/awsRegions.handler
     events:
       - http:
           path: /awsregions
@@ -83,6 +95,10 @@ functions:
           cors: true
       - http:
           path: /awsregions/{awsRegionCode}
+          method: DELETE
+          cors: true
+      - http:
+          path: /awsregions
           method: DELETE
           cors: true
       - http:
@@ -90,7 +106,7 @@ functions:
           method: POST
           cors: true
   socialUsers:
-    handler: socialUsers.handler
+    handler: provider_request_lambda/socialUsers.handler
     events:
       - http:
           path: /socialusers
@@ -102,6 +118,10 @@ functions:
           cors: true
       - http:
           path: /socialusers/{socialEmail}
+          method: DELETE
+          cors: true
+      - http:
+          path: /socialusers
           method: DELETE
           cors: true
       - http:
@@ -109,7 +129,7 @@ functions:
           method: POST
           cors: true
   tenants:
-    handler: tenants.handler
+    handler: provider_request_lambda/tenants.handler
     events:
       - http:
           path: /tenants
@@ -125,8 +145,9 @@ functions:
           cors: true
       - http:
           path: /tenants
+          method: DELETE
+          cors: true
+      - http:
+          path: /tenants
           method: POST
           cors: true
-package:
-  include:
-    - common.js
