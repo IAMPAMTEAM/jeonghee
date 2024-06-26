@@ -1,0 +1,178 @@
+service: social-login-lambda
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  stage: ${opt:stage, 'dev'}
+  region: ap-northeast-2
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:*
+        - s3-object-lambda:*
+      Resource:
+        - arn:aws:s3:::iampam-provider-data/provider/*
+  environment:
+    BUCKET_NAME: iampam-provider-data
+    FILE_NAME: provider/socialUsers.json
+    JSON_KEY: socialEmail
+    JWT_SECRET_KEY: randomiampamsecretkeythatshouldbechanged
+    PORTONE_V2_API_SECRET: 2mavgflG4KejdTnmB32CeM9p0wqJqZUW7yWIkJTY8tdmvz0DdXFW7jZlBfl19MMQIsCDcJB9VU98Iucz
+
+functions:
+  authorizer:
+    handler: lambda/authorizer.handler
+  googleLogin:
+    handler: lambda/googleLogin.handler
+    events:
+      - http:
+          path: /login/{provider}
+          method: POST
+          cors:
+            origin: ${self:custom.stageVars.${self:custom.stage, 'dev'}.webURL}
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+              - X-Amzn-Trace-Id
+            allowCredentials: true
+          integration: lambda-proxy
+  verifyToken:
+    handler: lambda/verifyToken.handler
+    events:
+      - http:
+          path: /verify_token
+          method: GET
+          cors:
+            origin: ${self:custom.stageVars.${self:custom.stage, 'dev'}.webURL}
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+              - X-Amzn-Trace-Id
+            allowCredentials: true
+          authorizer:
+            name: authorizer
+            type: request
+            identitySource: method.request.header.Cookie
+          integration: lambda-proxy
+  signup:
+    handler: lambda/signup.handler
+    events:
+      - http:
+          path: /signup
+          method: POST
+          cors:
+            origin: ${self:custom.stageVars.${self:custom.stage, 'dev'}.webURL}
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+              - X-Amzn-Trace-Id
+            allowCredentials: true
+          integration: lambda-proxy
+  logout:
+    handler: lambda/logout.handler
+    events:
+      - http:
+          path: /logout
+          method: GET
+          cors:
+            origin: ${self:custom.stageVars.${self:custom.stage, 'dev'}.webURL}
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+              - X-Amzn-Trace-Id
+            allowCredentials: true
+          integration: lambda-proxy
+  registerTenant:
+    handler: lambda/registerTenant.handler
+    events:
+      - http:
+          path: /registerTenant
+          method: POST
+          cors:
+            origin: ${self:custom.stageVars.${self:custom.stage, 'dev'}.webURL}
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+              - X-Amzn-Trace-Id
+            allowCredentials: true
+          authorizer:
+            name: authorizer
+            type: request
+            identitySource: method.request.header.Cookie
+          integration: lambda-proxy
+  paymentComplete:
+    handler: lambda/paymentComplete.handler
+    events:
+      - http:
+          path: /payment/complete
+          method: POST
+          cors:
+            origin: ${self:custom.stageVars.${self:custom.stage, 'dev'}.webURL}
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+              - X-Amzn-Trace-Id
+            allowCredentials: true
+          authorizer:
+            name: authorizer
+            type: request
+            identitySource: method.request.header.Cookie
+          integration: lambda-proxy
+
+resources:
+  Resources:
+    GatewayResponseDefault4XX:
+      Type: "AWS::ApiGateway::GatewayResponse"
+      Properties:
+        ResponseParameters:
+          gatewayresponse.header.Access-Control-Allow-Origin: "'${self:custom.stageVars.${self:custom.stage, 'dev'}.webURL}'"
+          gatewayresponse.header.Access-Control-Allow-Methods: "'GET, POST, PUT, DELETE, OPTIONS'"
+          gatewayresponse.header.Access-Control-Allow-Credentials: "'true'"
+          gatewayresponse.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent,X-Amzn-Trace-Id'"
+        ResponseType: DEFAULT_4XX
+        RestApiId:
+          Ref: "ApiGatewayRestApi"
+    GatewayResponseDefault5XX:
+      Type: "AWS::ApiGateway::GatewayResponse"
+      Properties:
+        ResponseParameters:
+          gatewayresponse.header.Access-Control-Allow-Origin: "'${self:custom.stageVars.${self:custom.stage, 'dev'}.webURL}'"
+          gatewayresponse.header.Access-Control-Allow-Methods: "'GET, POST, PUT, DELETE, OPTIONS'"
+          gatewayresponse.header.Access-Control-Allow-Credentials: "'true'"
+          gatewayresponse.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent,X-Amzn-Trace-Id,Cookie'"
+
+        ResponseType: DEFAULT_5XX
+        RestApiId:
+          Ref: "ApiGatewayRestApi"
+custom:
+  stage: ${opt:stage}
+  stageVars:
+    dev:
+      webURL: http://localhost:3000
+    production:
+      webURL: https://iampam.io
